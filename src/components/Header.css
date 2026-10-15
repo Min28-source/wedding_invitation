@@ -1,0 +1,312 @@
+:root {
+  /* ========================================================
+     HEADER & FLOWER CUSTOMIZATION VARIABLES
+     ======================================================== */
+
+  /* Background Color */
+  --hero-bg: #F6F2E9; /* Warm Ivory */
+
+  /* Flower Sizing (flowers-2-transparent, top-right corner) */
+  --flower-size-desktop: 440px;
+  --flower-size-tablet: 340px;
+  --flower-size-mobile: 250px;
+
+  /* Flower Positioning in Top-Right Corner */
+  --flower-tr-top: 0px;
+  --flower-tr-right: 0px;
+
+  /* Rose Sizing (rose-transparent, lower-left corner) */
+  --rose-size-desktop: 440px;
+  --rose-size-tablet: 340px;
+  --rose-size-mobile: 250px;
+
+  /* Rose Positioning in Lower-Left Corner */
+  --rose-bl-bottom: 0px;
+  --rose-bl-left: 0px;
+
+  /* Animation Timings */
+  --text-anim-duration: 1.4s;
+  --text-anim-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Staggered Delay Sequence */
+  --delay-eyebrow: 0.3s;
+  --delay-groom: 0.7s;
+  --delay-ampersand: 1.1s;
+  --delay-bride: 1.4s;
+  --delay-date: 1.8s;
+  --delay-flower: 2.1s;
+  --delay-rose: 2.1s;
+}
+
+/* ========================================================
+   HERO CONTAINER
+   ======================================================== */
+.wedding-header {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--hero-bg);
+  overflow: hidden;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+}
+
+/* ========================================================
+   CENTRAL CONTENT AREA
+   ======================================================== */
+.header-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.38em;
+  text-indent: 0.38em; /* Offsets letter-spacing to center visually */
+  color: #7a7061;
+  text-transform: uppercase;
+  margin: 0 0 1.8rem 0;
+}
+
+/* Couple Names Typography */
+.names-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.05;
+  margin-bottom: 1.8rem;
+}
+
+.names-container .name {
+  font-family: 'Cormorant Garamond', 'Cinzel', Georgia, serif;
+  font-size: clamp(3.2rem, 8vw, 6rem);
+  font-weight: 300;
+  letter-spacing: 0.32em;
+  color: #1a1714;
+  text-transform: uppercase;
+  margin: 0;
+  text-indent: 0.32em; /* Offsets letter-spacing to center visually */
+}
+
+.names-container .ampersand {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-weight: 300;
+  color: #3b3429;
+  margin: 0.2rem 0;
+  user-select: none;
+}
+
+.wedding-date {
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-size: 0.825rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em; /* Offsets letter-spacing to center visually */
+  color: #5c5345;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* ========================================================
+   FLORAL ACCENT (Top-Right Corner, flowers-2-transparent)
+   ======================================================== */
+.floral-corner-tr {
+  position: absolute;
+  top: var(--flower-tr-top);
+  right: var(--flower-tr-right);
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  animation: floralCornerFadeIn var(--text-anim-duration) var(--text-anim-ease) forwards;
+}
+
+.flower-accent-img {
+  display: block;
+  width: var(--flower-size-desktop);
+  height: auto;
+  object-fit: contain;
+  object-position: top right;
+  transform: none; /* No tilt applied */
+  filter: drop-shadow(0 10px 24px rgba(60, 30, 40, 0.08));
+  user-select: none;
+}
+
+/* ========================================================
+   FLORAL ACCENT (Lower-Left Corner, rose-transparent)
+   ======================================================== */
+.floral-corner-bl {
+  position: absolute;
+  bottom: var(--rose-bl-bottom);
+  left: var(--rose-bl-left);
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  animation: floralCornerFadeIn var(--text-anim-duration) var(--text-anim-ease) forwards;
+}
+
+.rose-accent-img {
+  display: block;
+  width: var(--rose-size-desktop);
+  height: auto;
+  object-fit: contain;
+  object-position: bottom left;
+  transform: none; /* Preserves natural corner orientation */
+  filter: drop-shadow(0 10px 24px rgba(60, 30, 40, 0.08));
+  user-select: none;
+}
+
+/* ========================================================
+   FADE-IN ENTRANCE ANIMATIONS
+   ======================================================== */
+@keyframes textUpwardFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floralCornerFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-element {
+  opacity: 0; /* Starts completely invisible on initial reload */
+  animation: textUpwardFadeIn var(--text-anim-duration) var(--text-anim-ease) forwards;
+  will-change: transform, opacity;
+}
+
+.delay-eyebrow {
+  animation-delay: var(--delay-eyebrow);
+}
+
+.delay-groom {
+  animation-delay: var(--delay-groom);
+}
+
+.delay-ampersand {
+  animation-delay: var(--delay-ampersand);
+}
+
+.delay-bride {
+  animation-delay: var(--delay-bride);
+}
+
+.delay-date {
+  animation-delay: var(--delay-date);
+}
+
+.delay-flower {
+  animation-delay: var(--delay-flower);
+}
+
+.delay-rose {
+  animation-delay: var(--delay-rose);
+}
+
+/* ========================================================
+   RESPONSIVE DESIGN (Tablets & Mobile)
+   ======================================================== */
+@media (max-width: 900px) {
+  .wedding-header {
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 2rem 1.25rem;
+  }
+
+  .flower-accent-img {
+    width: min(var(--flower-size-tablet), 48vw);
+  }
+
+  .rose-accent-img {
+    width: min(var(--rose-size-tablet), 48vw);
+  }
+}
+
+@media (max-width: 600px) {
+  .wedding-header {
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 1.5rem 1rem;
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-indent: 0.28em;
+    margin-bottom: 1.4rem;
+  }
+
+  .names-container {
+    margin-bottom: 1.4rem;
+  }
+
+  .wedding-date {
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-indent: 0.22em;
+  }
+
+  .flower-accent-img {
+    width: min(var(--flower-size-mobile), 52vw);
+  }
+
+  .rose-accent-img {
+    width: min(var(--rose-size-mobile), 52vw);
+  }
+}
+
+/* Any touch/phone, including large and landscape displays that exceed width breakpoints */
+@media (hover: none) and (pointer: coarse) {
+  .flower-accent-img {
+    width: min(var(--flower-size-mobile), 52vw);
+  }
+
+  .rose-accent-img {
+    width: min(var(--rose-size-mobile), 52vw);
+  }
+}
+
+/* ========================================================
+   ACCESSIBILITY: PREFERS-REDUCED-MOTION
+   ======================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .fade-element,
+  .floral-corner-tr,
+  .floral-corner-bl {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
